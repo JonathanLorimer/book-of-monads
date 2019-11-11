@@ -3,7 +3,21 @@
 # For more information, please see the documentation at:
 #   https://docs.haskellstack.org/en/stable/lock_files
 
-packages: []
+packages:
+- completed:
+    hackage: haskell-lsp-0.17.0.0@sha256:ddfcc2798f04bcb1ec20fafc02c03faa197322192578e879cef5852aba43ebcb,5264
+    pantry-tree:
+      size: 1725
+      sha256: 5b36127a42d8eee41f21893da5259cac9263d9a5be46ad1e31ed1d512bbf7ac4
+  original:
+    hackage: haskell-lsp-0.17.0.0@sha256:ddfcc2798f04bcb1ec20fafc02c03faa197322192578e879cef5852aba43ebcb,5264
+- completed:
+    hackage: haskell-lsp-types-0.17.0.0@sha256:9078237412d0596a7d09d432389c8fa21d6f3e21ed2ed761b3093a21607d6c28,2941
+    pantry-tree:
+      size: 2451
+      sha256: cfc8c04af6d98d314bdf47f40fd69dc37b8ba440ff2826fa6425bd66b733c2e3
+  original:
+    hackage: haskell-lsp-types-0.17.0.0@sha256:9078237412d0596a7d09d432389c8fa21d6f3e21ed2ed761b3093a21607d6c28,2941
 snapshots:
 - completed:
     size: 545658
