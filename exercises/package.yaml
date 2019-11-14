@@ -50,6 +50,7 @@ dependencies:
 - transformers
 - logict
 - stm
+- mtl
 
 library:
   source-dirs: src

@@ -20,8 +20,6 @@ j3 = LMaybe (Just 3)
 a = (j1 <> j2) <> j3
 b = j1 <> (j2 <> j3)
 
--- $> a == b
-
 instance Semigroup (RMaybe a) where
   (<>) rm (RMaybe Nothing) = rm
   (<>) _ rm = rm
@@ -36,8 +34,6 @@ g3 = RMaybe (Just 3)
 
 c = (g1 <> g2) <> g3
 d = g1 <> (g2 <> g3)
-
--- $> c == d
 
 -- | Exercise 5.2
 {-

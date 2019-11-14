@@ -54,8 +54,6 @@ siblingRels = do
   guard (p1 == p2 && c1 /= c2)
   return (c1, c2)
 
--- $> siblingRels
-
 -- | Exercise 7.4
 
 list :: [a] -> Logic a
@@ -72,8 +70,6 @@ pyts ns = do
   (x,y,z) <- fairTriples ns
   guard (x * x + y * y == z * z)
   return (x,y,z)
-
--- $> observeAllT $ pyts [1,2,3,4,5]
 
 class Monad m => MonadError e m | m -> e where
   throwError :: e -> m a
