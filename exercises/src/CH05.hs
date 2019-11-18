@@ -13,12 +13,15 @@ instance Semigroup (LMaybe a) => Monoid (LMaybe a) where
   mempty = LMaybe Nothing
   mappend = (<>)
 
+{-
 j1 = LMaybe (Just 1)
 j2 = LMaybe (Just 2)
 j3 = LMaybe (Just 3)
 
+
 a = (j1 <> j2) <> j3
 b = j1 <> (j2 <> j3)
+-}
 
 instance Semigroup (RMaybe a) where
   (<>) rm (RMaybe Nothing) = rm
@@ -28,12 +31,14 @@ instance Semigroup (RMaybe a) => Monoid (RMaybe a) where
   mempty = RMaybe Nothing
   mappend = (<>)
 
+{-
 g1 = RMaybe (Just 1)
 g2 = RMaybe (Just 2)
 g3 = RMaybe (Just 3)
 
 c = (g1 <> g2) <> g3
 d = g1 <> (g2 <> g3)
+-}
 
 -- | Exercise 5.2
 {-

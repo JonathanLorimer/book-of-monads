@@ -26,7 +26,7 @@ instance (Monad m) => Swappable Maybe m where
   swap Nothing = pure Nothing
   swap (Just x) = fmap Just x
 
-
+-- Writer
 newtype Writer w a = Writer { unWriter :: (a, w) }
   deriving (Eq, Ord, Show)
 
@@ -44,6 +44,7 @@ instance Monoid w => Monad (Writer w) where
 instance (Monad m, Monoid w) => Swappable (Writer w) m where
   swap (Writer (a, w)) = fmap (Writer . (,w)) a
 
+-- Reader
 newtype Reader r a = Reader { runReader :: r -> a }
 
 instance Functor (Reader r) where

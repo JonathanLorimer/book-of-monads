@@ -8,7 +8,7 @@ import Data.Foldable
 data Either' e r = Left' e | Right' r
 
 instance Functor (Either' e) where
-  fmap f (Left' e) = Left' e
+  fmap _ (Left' e) = Left' e
   fmap f (Right' r) = Right' $ f r
 
 instance Applicative (Either' e) where
@@ -19,7 +19,7 @@ instance Applicative (Either' e) where
 
 instance Monad (Either' e) where
   return = pure
-  (>>=) (Left' e)  f = Left' e
+  (>>=) (Left' e)  _ = Left' e
   (>>=) (Right' a) f = f a
 
 -- | Exercise 7.2
