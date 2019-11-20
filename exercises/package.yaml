@@ -54,6 +54,8 @@ dependencies:
 
 library:
   source-dirs: src
+  ghc-options:
+  - -Wall
 
 tests:
   exercises-test:
