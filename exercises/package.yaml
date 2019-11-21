@@ -48,9 +48,12 @@ default-extensions:
 dependencies:
 - base >= 4.7 && < 5
 - transformers
+- transformers-base
 - logict
 - stm
 - mtl
+- unliftio
+- unliftio-core
 
 library:
   source-dirs: src
