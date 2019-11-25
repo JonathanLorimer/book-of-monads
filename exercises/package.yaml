@@ -54,6 +54,7 @@ dependencies:
 - mtl
 - unliftio
 - unliftio-core
+- containers
 
 library:
   source-dirs: src
