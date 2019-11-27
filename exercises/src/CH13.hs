@@ -1,3 +1,4 @@
+{-# LANGUAGE GADTs #-}
 module CH13 where
 
 import Data.Map as M
@@ -184,4 +185,48 @@ foldFree int (Free x) = do x' <- int x
                            foldFree int x'
 
 
+-- | Exercise 13.12
 
+data TicTacToeOP a where
+  InfoOP :: Position -> TicTacToeOP (Maybe Player)
+  TakeOP :: Position -> TicTacToeOP Result
+  TTDone :: a        -> TicTacToeOP a
+  TTBind :: TicTacToeOP a -> (a -> TicTacToeOP b) -> TicTacToeOP b
+
+instance Functor TicTacToeOP where
+  fmap f t = t `TTBind` (TTDone . f)
+
+-- | Exercise 13.13
+
+data FSOP a where
+  WriteFileOP :: FilePath -> String -> FSOP (Either FSError ())
+  ReadFileOP  :: FilePath           -> FSOP (Either FSError String)
+  FSDoneOP    :: a                  -> FSOP a
+  FSBindOP    :: FSOP a -> (a -> FSOP b) -> FSOP b
+
+  {-
+instance Monad FSOP where
+  return = FSDoneOP
+  (>>=) = FSBindOP
+  -}
+
+-- | Exercise 13.14
+
+data Program instr a where
+  PDone  :: a -> Program instr a
+  PBind  :: Program instr b -> (b -> Program instr a) -> Program instr a
+  PInstr :: instr a -> Program instr a
+
+
+instance Functor (Program instr) where
+  fmap f p = p `PBind` (PDone . f)
+
+instance Applicative (Program instr) where
+  pure = PDone
+  (<*>) (PDone f) p = f <$> p
+  (<*>) (PBind m k) p = PBind m $ (<*> p) . k
+  (<*>) pinstr p = pinstr <*> p
+
+instance Monad (Program isntr) where
+  return = PDone
+  (>>=)  = PBind
