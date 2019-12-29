@@ -230,3 +230,63 @@ instance Applicative (Program instr) where
 instance Monad (Program isntr) where
   return = PDone
   (>>=)  = PBind
+
+-- | Exercise 13.15
+data Freer instr a where
+  PureFr :: a -> Freer instr a
+  ImpureFr :: instr a -> (a -> Freer instr b) -> Freer instr b
+
+instance Functor (Freer instr) where
+  fmap f fr = f <$> fr
+
+instance Applicative (Freer instr) where
+  pure = PureFr
+  f <*> x =  f >>= (<$> x)
+
+instance Monad (Freer instr) where
+  return = PureFr
+  PureFr x >>= f = f x
+  ImpureFr x k >>= f = ImpureFr x (f <=< k)
+
+
+-- | Exercise 13.16
+
+twoToThree :: Freer instr a -> Program instr a
+twoToThree (PureFr a)  = PDone a
+twoToThree (ImpureFr x k) = PBind (PInstr x) (twoToThree . k)
+
+threeToTwo :: Program instr a -> Freer instr a
+threeToTwo (PDone a) = PureFr a
+threeToTwo (PInstr ia) = ia `ImpureFr` PureFr
+threeToTwo pa = threeToTwo pa
+
+-- | Exercise 13.17
+data IStackF r = Pop (Integer -> r) | Push Integer r deriving Functor
+type IStack = Free IStackF
+
+liftF :: Functor f => f a -> Free f a
+liftF = Free . fmap return
+
+pop :: IStack Integer
+pop = liftF (Pop id)
+
+push :: Integer -> IStack ()
+push v = liftF (Push v ())
+
+data RPNInstruction = Number Integer | Plus | Times
+
+evaluate :: [RPNInstruction] -> IStack Integer
+evaluate [] = pop
+evaluate (Number n   : r) = push n >> evaluate r
+evaluate (Plus       : r) = ((+) <$> pop <*> pop) >>= push >> evaluate r
+evaluate (Times      : r) = ((*) <$> pop <*> pop) >>= push >> evaluate r
+
+  {-
+interpretStack :: IStack r -> State [Integer] r
+interpretStack (Pure x) = pure x
+interpretStack (Free (Pop f)) = do
+  stack <- get
+  case stack of
+    [] -> error "fixme"
+    x:xs ->  modify (const xs) >>= interpretStack $ f x
+  -}
