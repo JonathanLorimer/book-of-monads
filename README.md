@@ -1,1 +1,25 @@
-# book-of-monads
+# Book of Monads Exercises
+
+- [Chapter 0 - Introduction](https://github.com/JonathanLorimer/book-of-monads/blob/master/exercises/src/CH00.hs) 
+- I. What is a Monad?
+  - [Chapter 1 - Discovering Monads](https://github.com/JonathanLorimer/book-of-monads/blob/master/exercises/src/CH01.hs)
+  - Chapter 2 - Better Notation
+  - [Chapter 3 - Lifting Pure Functions](https://github.com/JonathanLorimer/book-of-monads/blob/master/exercises/src/CH03.hs)
+  - [Chapter 4 - Utilities for Monadic Code](https://github.com/JonathanLorimer/book-of-monads/blob/master/exercises/src/CH04.hs)
+  - [Chapter 5 - Interlude: Monad Laws](https://github.com/JonathanLorimer/book-of-monads/blob/master/exercises/src/CH05.hs)
+- II. More Monads
+  - [Chapter 6 - Pure Reader-Writer-State Moands](https://github.com/JonathanLorimer/book-of-monads/blob/master/exercises/src/CH06.hs)
+  - [Chapter 7 - Failure and Logic](https://github.com/JonathanLorimer/book-of-monads/blob/master/exercises/src/CH07.hs)
+  - [Chapter 8 - Monads for Mutability](https://github.com/JonathanLorimer/book-of-monads/blob/master/exercises/src/CH08.hs)
+  - [Chapter 9 - Resource Management and Continuations](https://github.com/JonathanLorimer/book-of-monads/blob/master/exercises/src/CH09.hs)
+- III. Combining Monads
+  - [Chapter 10 - Functor Composition](https://github.com/JonathanLorimer/book-of-monads/blob/master/exercises/src/CH10.hs)
+  - [Chapter 11 - A Solution: Monad Transformers](https://github.com/JonathanLorimer/book-of-monads/blob/master/exercises/src/CH11.hs)
+  - [Chapter 12 - Generic Lifting and Unlifiting](https://github.com/JonathanLorimer/book-of-monads/blob/master/exercises/src/CH12.hs)
+- IV. Rolling Your Own Monads
+  - [Chapter 13 - Defining Custom Monads](https://github.com/JonathanLorimer/book-of-monads/blob/master/exercises/src/CH13.hs)
+  - ~~Chapter 14 - Composing Custom Monads~~
+  - ~~Chapter 15 - Performance of Free Monads~~
+- V. Diving into Theory
+  - ~~Chapter 16 - A Roadmap~~
+  - ~~Chapter 17 - Composing Custom Monads~~
