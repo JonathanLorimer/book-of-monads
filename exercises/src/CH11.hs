@@ -1,12 +1,12 @@
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module CH11 where
 
-import Control.Monad.Trans.Maybe
-import Control.Monad.Trans.State
-import Control.Monad.Trans.Except
-import Control.Monad.Trans.Reader
-import Control.Monad.Trans.Cont
 import Control.Monad.Identity
+import Control.Monad.Trans.Cont
+import Control.Monad.Trans.Except
+import Control.Monad.Trans.Maybe
+import Control.Monad.Trans.Reader
+import Control.Monad.Trans.State
 
 
 -- | Exercise 11.1
@@ -35,6 +35,7 @@ eval (Op o x y) = do
 withStateMaybe :: (b -> Maybe a) -> MaybeT (State b) a
 withStateMaybe f = MaybeT $ gets f
 
+
 -- | Exercise 11.2
 
 -- ExceptT + []
@@ -43,7 +44,7 @@ instance {-# Overlaps #-} Monad (ExceptT e []) where
   (ExceptT as) >>= f = ExceptT $ do
     a <- as
     case runExceptT . f <$> a of
-      Left e -> pure $ Left e
+      Left e  -> pure $ Left e
       Right x -> x
 
 -- StateT + Either
