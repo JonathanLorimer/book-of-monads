@@ -1,10 +1,10 @@
 {-# LANGUAGE GADTs #-}
 module CH13 where
 
-import Data.Map as M
-import Control.Monad.Trans.Reader
 import Control.Monad.State
+import Control.Monad.Trans.Reader
 import Data.Functor.Contravariant
+import Data.Map                   as M
 import System.IO.Error
 
 data Player = O | X deriving (Eq, Ord)
@@ -91,7 +91,7 @@ data TicTacToe a = Info Position (Maybe Player -> TicTacToe a)
                  | Done a
 
 instance Functor TicTacToe where
-  fmap f (Done a) = Done $ f a
+  fmap f (Done a)   = Done $ f a
   fmap f (Info p k) = Info p (fmap f . k)
   fmap f (Take p k) = Take p (fmap f . k)
 
@@ -223,9 +223,9 @@ instance Functor (Program instr) where
 
 instance Applicative (Program instr) where
   pure = PDone
-  (<*>) (PDone f) p = f <$> p
+  (<*>) (PDone f) p   = f <$> p
   (<*>) (PBind m k) p = PBind m $ (<*> p) . k
-  (<*>) pinstr p = pinstr <*> p
+  (<*>) pinstr p      = pinstr <*> p
 
 instance Monad (Program isntr) where
   return = PDone
@@ -252,13 +252,13 @@ instance Monad (Freer instr) where
 -- | Exercise 13.16
 
 twoToThree :: Freer instr a -> Program instr a
-twoToThree (PureFr a)  = PDone a
+twoToThree (PureFr a)     = PDone a
 twoToThree (ImpureFr x k) = PBind (PInstr x) (twoToThree . k)
 
 threeToTwo :: Program instr a -> Freer instr a
-threeToTwo (PDone a) = PureFr a
+threeToTwo (PDone a)   = PureFr a
 threeToTwo (PInstr ia) = ia `ImpureFr` PureFr
-threeToTwo pa = threeToTwo pa
+threeToTwo pa          = threeToTwo pa
 
 -- | Exercise 13.17
 data IStackF r = Pop (Integer -> r) | Push Integer r deriving Functor
@@ -276,7 +276,7 @@ push v = liftF (Push v ())
 data RPNInstruction = Number Integer | Plus | Times
 
 evaluate :: [RPNInstruction] -> IStack Integer
-evaluate [] = pop
+evaluate []               = pop
 evaluate (Number n   : r) = push n >> evaluate r
 evaluate (Plus       : r) = ((+) <$> pop <*> pop) >>= push >> evaluate r
 evaluate (Times      : r) = ((*) <$> pop <*> pop) >>= push >> evaluate r

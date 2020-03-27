@@ -55,6 +55,7 @@ dependencies:
 - unliftio
 - unliftio-core
 - containers
+- text
 
 library:
   source-dirs: src
