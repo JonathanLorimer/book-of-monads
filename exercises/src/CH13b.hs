@@ -7,10 +7,10 @@ module CH13b where
 import           Control.Monad.Except
 import           Control.Monad.Reader.Class
 import           Control.Monad.State
-import           Control.Monad.State.Class
+-- import           Control.Monad.State.Class
 import           Control.Monad.Trans.Reader (ReaderT)
 import           Data.Text                  (Text)
-import qualified Data.Text                  as T
+-- import qualified Data.Text                  as T
 -- import Data.Functor.Contravariant
 -- import Data.Map                   as M
 -- import System.IO.Error
