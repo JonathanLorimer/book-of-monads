@@ -1,6 +1,6 @@
 # Book of Monads Exercises
 
-- [Chapter 0 - Introduction](https://github.com/JonathanLorimer/book-of-monads/blob/master/exercises/src/CH00.hs) 
+- [Chapter 0 - Introduction](https://github.com/JonathanLorimer/book-of-monads/blob/master/exercises/src/CH00.hs)
 - I. What is a Monad?
   - [Chapter 1 - Discovering Monads](https://github.com/JonathanLorimer/book-of-monads/blob/master/exercises/src/CH01.hs)
   - Chapter 2 - Better Notation
@@ -19,7 +19,7 @@
 - IV. Rolling Your Own Monads
   - [Chapter 13 - Defining Custom Monads](https://github.com/JonathanLorimer/book-of-monads/blob/master/exercises/src/CH13.hs)
   - ~~Chapter 14 - Composing Custom Monads~~
-  - ~~Chapter 15 - Performance of Free Monads~~
+  - [Chapter 15 - Performance of Free Monads](https://github.com/JonathanLorimer/book-of-monads/blob/master/exercises/src/CH15.hs)
 - V. Diving into Theory
   - ~~Chapter 16 - A Roadmap~~
   - ~~Chapter 17 - Composing Custom Monads~~
